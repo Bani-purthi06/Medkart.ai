@@ -1,0 +1,49 @@
+import { openRenderedPage } from "../../browser/puppeteer";
+import { captureJsonResponses } from "../../browser/interceptors";
+
+export interface RawApollo247Result {
+  productName: string;
+  price: number | null;
+  packSize: string | null;
+  sourceUrl: string;
+}
+
+/**
+ * Scrapes Apollo 24/7 using network interception instead of DOM-reading —
+ * Apollo's product data loads via an internal JSON API call, so
+ * capturing that response directly is more reliable than parsing
+ * rendered HTML. The exact URL pattern and JSON field names below
+ * are placeholders — confirm against the real network tab
+ * (DevTools -> Network -> XHR) before relying on this.
+ */
+export async function scrapeApollo247(medicineName: string): Promise<RawApollo247Result[]> {
+  const searchUrl = `https://www.apollo247.com/search-medicines?q=${encodeURIComponent(medicineName)}`;
+  const page = await openRenderedPage(searchUrl, 20000);
+
+  // Must attach interceptor before navigation actually triggers the API call —
+  // openRenderedPage already navigated, so this pattern needs the interceptor
+  // attached first in real usage. Adjusted here: re-navigate after attaching.
+  const { results, stop } = captureJsonResponses(page, /\/api\/.*search.*products/i);
+
+  try {
+    await page.reload({ waitUntil: "networkidle2", timeout: 20000 });
+
+    const productResults: RawApollo247Result[] = [];
+    for (const captured of results) {
+      const items = captured.json?.products ?? captured.json?.data ?? [];
+      for (const item of items) {
+        productResults.push({
+          productName: item.name ?? item.productName ?? "",
+          price: item.price ?? item.sellingPrice ?? null,
+          packSize: item.packSize ?? null,
+          sourceUrl: searchUrl,
+        });
+      }
+    }
+
+    return productResults.filter((r) => r.productName);
+  } finally {
+    stop();
+    await page.close();
+  }
+}

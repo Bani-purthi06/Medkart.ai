@@ -1,0 +1,32 @@
+import { fetchAndParse } from "../../static-scrapers/cheerio-client";
+
+export interface RawPharmeasyResult {
+  productName: string;
+  price: string | null;
+  packSize: string | null;
+  sourceUrl: string;
+}
+
+/**
+ * Scrapes PharmEasy's search results for a given medicine name.
+ * Selectors below are placeholders — confirm against the live DOM
+ * (right-click a product card -> Inspect) before relying on this.
+ */
+export async function scrapePharmeasy(medicineName: string): Promise<RawPharmeasyResult[]> {
+  const searchUrl = `https://pharmeasy.in/search/all?name=${encodeURIComponent(medicineName)}`;
+  const $ = await fetchAndParse(searchUrl);
+
+  const results: RawPharmeasyResult[] = [];
+
+  $(".ProductCard_medicineUnitContainer__i5F4k").each((_, el) => {
+    const productName = $(el).find(".ProductCard_medicineName__6-mtNZ").text().trim();
+    const price = $(el).find(".ProductCard_ourPrice__RtCazM").text().trim() || null;
+    const packSize = $(el).find(".ProductCard_packSize__2GaJ0").text().trim() || null;
+
+    if (productName) {
+      results.push({ productName, price, packSize, sourceUrl: searchUrl });
+    }
+  });
+
+  return results;
+}

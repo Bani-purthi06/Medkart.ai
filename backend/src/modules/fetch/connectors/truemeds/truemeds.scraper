@@ -1,0 +1,38 @@
+import { openRenderedPage } from "../../browser/puppeteer";
+
+export interface RawTruemedsResult {
+  productName: string;
+  price: string | null;
+  packSize: string | null;
+  sourceUrl: string;
+}
+
+/**
+ * Scrapes Truemeds by waiting for the page to render, then reading
+ * the DOM directly. Selectors are placeholders — confirm against
+ * live DOM before relying on this.
+ */
+export async function scrapeTruemeds(medicineName: string): Promise<RawTruemedsResult[]> {
+  const searchUrl = `https://www.truemeds.in/search?q=${encodeURIComponent(medicineName)}`;
+  const page = await openRenderedPage(searchUrl);
+
+  try {
+    // Give any lazy-loaded price elements a moment beyond networkidle2
+    await page.waitForSelector(".product-card", { timeout: 8000 }).catch(() => null);
+
+    const results = await page.evaluate(() => {
+      const cards = Array.from(document.querySelectorAll(".product-card"));
+      return cards.map((card) => ({
+        productName: card.querySelector(".product-name")?.textContent?.trim() || "",
+        price: card.querySelector(".product-price")?.textContent?.trim() || null,
+        packSize: card.querySelector(".pack-size")?.textContent?.trim() || null,
+      }));
+    });
+
+    return results
+      .filter((r) => r.productName)
+      .map((r) => ({ ...r, sourceUrl: searchUrl }));
+  } finally {
+    await page.close();
+  }
+}

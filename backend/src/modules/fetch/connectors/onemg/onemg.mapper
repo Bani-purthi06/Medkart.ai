@@ -1,0 +1,36 @@
+import { RawOnemgResult } from "./onemg.scraper";
+
+export interface NormalizedPrice {
+  medicineId: number;
+  platformId: number;
+  price: number;
+  discountPct: number | null;
+  stockStatus: boolean;
+  deliveryEta: string | null;
+}
+
+/**
+ * Converts 1mg's raw scraped shape into the unified NormalizedPrice
+ * shape shared across all 5 platforms. This is what makes the
+ * comparison table possible — everything downstream only ever
+ * touches NormalizedPrice, never a platform-specific shape.
+ */
+export function mapOnemgResult(
+  raw: RawOnemgResult,
+  medicineId: number,
+  platformId: number
+): NormalizedPrice | null {
+  if (!raw.price) return null;
+
+  const numericPrice = parseFloat(raw.price.replace(/[^0-9.]/g, ""));
+  if (isNaN(numericPrice)) return null;
+
+  return {
+    medicineId,
+    platformId,
+    price: numericPrice,
+    discountPct: null,       // 1mg search results don't always show discount inline; refine later
+    stockStatus: true,       // assume in-stock if it appeared in search results
+    deliveryEta: null,       // not available at search-result level; would need product page
+  };
+}
