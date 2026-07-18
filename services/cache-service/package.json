@@ -1,0 +1,14 @@
+{
+  "name": "@medcompare/cache-service",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc -p ../../tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@medcompare/shared-config": "workspace:*",
+    "redis": "^4.7.0"
+  }
+}
