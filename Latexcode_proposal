@@ -1,0 +1,474 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+% -----------------------------------------------------
+% bvraghav-tiet-ucs503p-article.sty
+% -----------------------------------------------------
+
+% Variable: Lab Instructor
+\makeatletter \newcommand{\BvrSetLabInstructor}[1]{%
+  \gdef\Bvr@LabInstructor{#1}}
+% default
+\newcommand{\Bvr@LabInstructor}{Dr. Raghav %
+  B. Venkataramaiyer}
+% public accessor
+\newcommand{\BvrLabInstructorValue}{\Bvr@LabInstructor}
+\makeatother
+
+% Add subtitle
+\usepackage{titling}
+% -- Set title bold
+\pretitle{\begin{center}\bfseries\fontsize{18bp}{18bp}\selectfont}
+\makeatletter
+\newcommand{\BvrSubtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip 0.5em}%
+}
+\makeatother
+
+% Hints in the section title(s)
+\newcommand{\BvrHint}[1]{%
+  {\normalfont\normalsize\itshape\hfill #1}}
+
+% -----------------------------------------------------
+
+\title{Medkart.ai: AI-Powered Medicine Price Comparison \& Safety Platform}
+
+\BvrSetLabInstructor{Dr. Anushka}
+
+\BvrSubtitle{%
+  Project Proposal for UCS503P  \\
+  Submitted to: \BvrLabInstructorValue \\ \bfseries
+  Thapar Institute of Engineering and Technology%
+}
+
+% NOTE: Email addresses below follow the institute's roll-number-based
+% naming convention (as demonstrated in the supplied template) since the
+% source PDF listed only names and roll numbers. Please verify/replace
+% with your actual official email IDs before submission.
+\author{
+  Bani, CSED%
+  \thanks{Roll No: \texttt{1024031090}, %
+    Email: \texttt{bani\_be24@thapar.edu}}
+  \and
+  Divay, CSED%
+  \thanks{Roll No: \texttt{1024030294}, %
+    Email: \texttt{divay\_be24@thapar.edu}}
+  \and
+  Rashika, CSED%
+  \thanks{Roll No: \texttt{1024030292}, %
+    Email: \texttt{rashika\_be24@thapar.edu}}
+  \and
+  Guneet, CSED%
+  \thanks{Roll No: \texttt{1024030286}, %
+    Email: \texttt{guneet\_be24@thapar.edu}}
+}
+
+\date{August 18, 2026}
+
+\begin{document}
+\maketitle
+
+\section{Higher-order goal%
+  \BvrHint{\ldots secondary framing}}
+This project aims to make essential medicine more affordable and
+safer to purchase for Indian patients. While the topic is broader
+than any single feature, the immediate engineering objective is to
+translate \emph{price fairness and purchase safety} into a
+measurable, deployable software solution: exposing price
+manipulation relative to government-regulated ceilings, and
+surfacing dangerous drug interactions before purchase.
+
+\section{Time-to-value %
+\BvrHint{\ldots primary heuristic}}
+\begin{itemize}[leftmargin=0.7cm]
+    \item We will deliver meaningful increments quickly by prototyping the core prescription-to-comparison workflow and validating it against real prescriptions and real pharmacy pricing data within a short iteration window.
+    \item We will prioritize fast feedback over perfection by using weekly iterations with continuous integration from the first iteration, so that feedback on OCR accuracy, price-comparison correctness, and anomaly-detection quality is available early and used to steer subsequent work.
+    \item Success is defined by what can be delivered and measured in the first iteration, then improved based on user feedback.
+\end{itemize}
+
+\section{Problem Statement}
+Medicine price comparison and drug-safety checking in India currently suffer from two distinct gaps, confirmed by a review of eight price-comparison platforms and four drug-interaction checkers:
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Unverified price anomalies:} existing Indian price-comparison platforms display scraped prices without checking deviation from the NPPA government ceiling price, and none explain why a price looks anomalous.
+    \item \textbf{Disconnected safety checking:} drug-interaction checking exists only as a separate US-market product category, never combined with Indian price comparison, generic-substitute trust scoring, or OCR-to-comparison in one pipeline.
+\end{itemize}
+
+\textbf{Why this matters now (contextual relevance):} a price-comparison tool is only as trustworthy as its ability to flag manipulated prices, and a medicine-purchase workflow is only as safe as its ability to warn against dangerous combinations before purchase --- which motivates addressing both as first-class engineering concerns rather than as separate, disconnected features.
+
+\section{Literature \& Market Review %
+\BvrHint{\ldots competitive positioning}}
+No product reviewed combines price-anomaly detection against a regulatory benchmark with drug-interaction safety checking in a single pipeline, positioning the AI-enrichment stage as the project's primary differentiator.
+
+\begin{table}[h]
+\centering
+\caption{Indian Price-Comparison Platforms: Capability Gap}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Product} & \textbf{Price Compare} & \textbf{OCR Upload} & \textbf{Generic Sub. + Trust} \\
+\midrule
+MedCompare       & Yes & No  & No \\
+MediSaathi       & Yes & Yes & Partial \\
+MedScanner       & Yes & No  & No \\
+MedikWise        & Yes & No  & No \\
+MediBachat       & Yes & No  & No \\
+RxJinn           & Yes & No  & No \\
+CheapestInIndia  & Yes & No  & No \\
+Medkart (tool)   & Yes & No  & Partial \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Medkart.ai is the only reviewed system occupying all five capability columns across both the price-comparison and interaction-checking tables simultaneously, combining Indian price comparison, OCR ingestion, generic-substitute trust scoring, NPPA-benchmarked anomaly detection with explainability, and India-scoped interaction checking.
+
+\section{Proposed Solution %
+\BvrHint{\ldots Software Proposition}}
+\subsection{Overview}
+Medkart.ai implements a \textbf{web-based} prescription-to-comparison pipeline across 5 Indian e-pharmacy platforms (1mg, PharmEasy, Netmeds, Truemeds, Apollo 24\slash{}7), consisting of a React web application and backend microservices covering OCR, structuring, normalization, fetching, AI enrichment, ranking, and realtime delivery:
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Web application:} prescription upload with OCR, direct search, real-time comparison, anomaly explanations, interaction warnings, watchlist alerts.
+    \item \textbf{OCR \& structuring pipeline:} extracts drug name\slash{}dosage\slash{}frequency; an LLM converts raw OCR text to structured fields.
+    \item \textbf{Normalization layer:} fuzzy-matches names to a canonical catalog; resolves brand to salt; logs match confidence.
+    \item \textbf{Hybrid fetch layer:} routes each platform to a static scraper or headless browser; applies anti-bot measures; checks Redis before scraping.
+    \item \textbf{AI-enrichment engine:} Isolation Forest anomaly detection vs.\ NPPA with SHAP explanations; generic-substitute ranking; LLM-based interaction checking with safety guardrails.
+    \item \textbf{Ranking \& realtime layer:} weighted scoring by price\slash{}discount\slash{}delivery\slash{}stock; progressive WebSocket\slash{}SSE streaming.
+\end{itemize}
+
+\subsection{Core workflow}
+\begin{enumerate}[leftmargin=0.7cm]
+    \item Patient uploads a prescription image or searches directly.
+    \item OCR extracts text; the structuring service parses it into drug\slash{}dosage\slash{}frequency fields.
+    \item Normalization maps names to canonical salts, logging match confidence.
+    \item The fetch service retrieves live prices from all 5 platforms (cache-first, with scrape fallback).
+    \item AI-enrichment flags anomalous prices (SHAP-explained) and checks drug interactions.
+    \item Ranking orders results; the realtime service streams them progressively to the patient.
+    \item Patient may watchlist a medicine for target-price alerts.
+\end{enumerate}
+
+\subsection{Operational constraints for a campus-pilot setting}
+\begin{itemize}[leftmargin=0.7cm]
+    \item Establish a rule-based\slash{}heuristic baseline (fixed-threshold NPPA deviation, keyword-match interaction check) before any ML component, so evaluation always has a non-ML floor to beat.
+    \item Use only publicly published NPPA ceiling-price data and document data provenance to avoid licensing risk.
+    \item Keep OCR human-correctable and provide a direct-search fallback so the system remains usable even when scanning fails.
+    \item Design for deployability using Docker Compose for local development and a single managed-cloud target (AWS) for the pilot.
+\end{itemize}
+
+\section{Solution Approach %
+\BvrHint{\ldots Engineering focus}}
+This is an engineering course project, so we focus on a working pipeline with a measurable baseline rather than novel algorithm research.
+
+\subsection{Price-anomaly detection approach %
+\BvrHint{\ldots baseline before ML}}
+\begin{itemize}[leftmargin=0.7cm]
+    \item Build a labelled dataset (normal, mildly overpriced, severely overpriced vs.\ NPPA ceiling).
+    \item Use a rule-based fixed-threshold baseline for comparison.
+    \item Develop the Isolation Forest detector with SHAP explainability and compare against the baseline on held-out data.
+\end{itemize}
+
+\subsection{System architecture %
+\BvrHint{\ldots web-based solution}}
+A typical multi-tier web architecture:
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Web application:} React-based patient-facing interface.
+    \item \textbf{API gateway:} single entrypoint; JWT auth; routes to all internal services.
+    \item \textbf{Backend microservices:} independently deployable services covering auth, OCR, structuring, normalization, fetch, normalization-output, AI-enrichment, ranking, cache, persistence, realtime, alerts, catalog-KB, and observability.
+\end{itemize}
+
+\medskip
+\noindent\textit{Technology stack summary:}
+
+\begin{table}[h]
+\centering
+\caption{Frontend}
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}p{4.3cm} X@{}}
+\toprule
+Layer & Technology \\
+\midrule
+Web application & React \\
+Mobile (future milestone) & React Native \\
+Shared UI components & \texttt{packages\slash{}ui-kit} (shared design system, web + mobile) \\
+Realtime client & WebSocket / SSE client for progressive result streaming \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Backend}
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}p{4.3cm} X@{}}
+\toprule
+Layer & Technology \\
+\midrule
+Language / runtime & Node.js with TypeScript across all services \\
+API layer & REST via \texttt{api-gateway}; JWT-based authentication \\
+Monorepo tooling & pnpm workspaces + Turborepo \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{AI / ML Layer}
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}p{4.3cm} X@{}}
+\toprule
+Component & Technology \\
+\midrule
+OCR & Tesseract, custom CNN, Veryfi (provider options) \\
+Prescription structuring & LLM-based parsing (drug\slash{}dose\slash{}frequency extraction) \\
+Fuzzy matching & RapidFuzz for drug-name and salt canonicalization \\
+Anomaly detection & Isolation Forest (scikit-learn) \\
+Explainability & SHAP for plain-language anomaly explanations \\
+Scraping automation & Puppeteer (headless) + Cheerio\slash{}Scrapy (static HTML) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Database / Data Layer}
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}p{4.3cm} X@{}}
+\toprule
+Store & Purpose \\
+\midrule
+PostgreSQL & Relational data: users, prescriptions, medicine aliases, salt maps, drug interactions, watchlists \\
+TimescaleDB (Postgres extension) & Time-series price history via hypertables \\
+Redis & Caching layer with TTL policies to reduce redundant scraping \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Infrastructure \& DevOps}
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}p{4.3cm} X@{}}
+\toprule
+Layer & Technology \\
+\midrule
+Containerization & Docker (\texttt{docker-compose.yml} for local dev) \\
+CI\slash{}CD & GitHub Actions (\texttt{ci.yml}, \texttt{scraper-regression.yml}, \texttt{ai-evals.yml}, \texttt{deploy.yml}) \\
+Observability & Centralized logging, tracing, metrics via \texttt{observability-service} \\
+Deployment & AWS \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Data scraping platform matrix %
+\BvrHint{\ldots platform-specific routing}}
+Each of the five target pharmacy platforms renders pricing differently. \texttt{fetch-service} routes each platform to the cheaper viable scraping method via a platform router (FR-12), avoiding a one-size-fits-all approach that would either waste compute (headless browser everywhere) or fail outright (static scraper on JS-rendered pages).
+
+{\small
+\begin{longtable}{@{}p{2.3cm}p{2.6cm}p{4.0cm}p{5.3cm}@{}}
+\caption{Data Scraping Platform Matrix} \\
+\toprule
+\textbf{Platform} & \textbf{Rendering} & \textbf{Method} & \textbf{Notes} \\
+\midrule
+\endhead
+1mg & Server-rendered & Static scraper (Cheerio\slash{}Scrapy) & Pricing present in initial HTML response \\
+PharmEasy & Client-side JS & Headless browser (Playwright) & Pricing loads asynchronously after mount \\
+Netmeds & Server-rendered & Static scraper & Similar to 1mg \\
+Truemeds & Client-side JS & Headless browser & Requires network-idle wait before price is readable \\
+Apollo 24\slash{}7 & Mixed & Headless browser (fallback from static) & Static attempted first; falls back to Playwright \\
+\bottomrule
+\end{longtable}
+}
+
+Anti-bot resilience (FR-13, NFR-6) relies on randomized request delays, header spoofing, Playwright stealth flags, asset-load interception, and per-platform circuit breaking. On failure, the system falls back to cached data, then seed\slash{}fixture data, rather than omitting a platform from the comparison table (FR-15, NFR-5).
+
+\subsection{System design --- core domain model %
+\BvrHint{\ldots UML class diagram}}
+The core domain model spans entity classes shared across the normalization, fetch, AI-enrichment, and persistence services. Relationships are shown as cardinalities; each class lists its key attributes and the service that owns it.
+
+{\footnotesize
+\begin{longtable}{@{}>{\bfseries}p{2.9cm}p{4.6cm}p{3.2cm}p{3.1cm}@{}}
+\caption{Core Domain Classes (Abstract/Entity Table)} \\
+\toprule
+\textbf{Class} & \textbf{Key Attributes} & \textbf{Owning Service} & \textbf{Relationships} \\
+\midrule
+\endhead
+User & userId, email, phone, passwordHash, createdAt & auth-service & 1--* Prescription; 1--* Watchlist \\
+Prescription & prescriptionId, userId, imageUrl, status, uploadedAt & ocr-service / persistence-service & 1--* PrescriptionItem \\
+PrescriptionItem & itemId, prescriptionId, rawText, drug, dosage, frequency, confidence & prescription-structuring-service & *--1 Medicine (via normalization) \\
+Medicine & medicineId, canonicalName, saltId, brandNames[] & catalog-kb-service / normalization-service & 1--* GenericSubstitute; *--* DrugInteraction \\
+PlatformPrice & priceId, medicineId, platform, price, mrp, discount, inStock, fetchedAt & fetch-service / persistence-service (TimescaleDB) & *--1 Medicine; 1--1 PriceAnomaly (optional) \\
+PriceAnomaly & anomalyId, priceId, isAnomalous, deviationFromNppa, shapExplanation & ai-enrichment-service & 1--1 PlatformPrice \\
+DrugInteraction & interactionId, drugA, drugB, severity, explanation, guardrailPassed & ai-enrichment-service (interaction-rag) & *--* Medicine \\
+Watchlist & watchlistId, userId, medicineId, targetPrice, status & alerts-service & *--1 User; *--1 Medicine \\
+\bottomrule
+\end{longtable}
+}
+
+\noindent\textit{Class relationship summary (UML notation):}
+\begin{itemize}[leftmargin=0.7cm]
+    \item User 1--* Prescription (a user uploads many prescriptions)
+    \item Prescription 1--* PrescriptionItem (a prescription contains many line items)
+    \item PrescriptionItem *--1 Medicine (each item resolves to one canonical medicine)
+    \item Medicine 1--* PlatformPrice (one medicine has many platform-specific prices)
+    \item PlatformPrice 1--1 PriceAnomaly (each price may have exactly one anomaly assessment)
+    \item Medicine *--* DrugInteraction (many-to-many; a medicine can interact with many others)
+    \item User 1--* Watchlist *--1 Medicine (a user watches many medicines; a medicine can be watched by many users)
+\end{itemize}
+
+\begin{sloppypar}
+At the physical schema level this is normalized further into \texttt{users}, \texttt{prescriptions}, \texttt{prescription\_items}, \texttt{medicines}, \texttt{salts}, \texttt{medicine\_salt\_map}, \texttt{medicine\_aliases}, \texttt{pharmacy\_platforms}, \texttt{platform\_prices} (a TimescaleDB hypertable), \texttt{price\_anomalies}, \texttt{nppa\_price\_ceiling}, \texttt{ranking\_snapshots}, \texttt{generic\_substitutes}, \texttt{drug\_interactions}, \texttt{interaction\_warnings}, \texttt{normalization\_logs}, \texttt{watchlists}, and \texttt{alert\_events}, as detailed in the accompanying ER diagram.
+\end{sloppypar}
+
+\subsection{CI\slash{}CD and fast delivery enabler}
+CI\slash{}CD will be used to:
+\begin{itemize}[leftmargin=0.7cm]
+    \item Automatically build and test on every change.
+    \item Produce repeatable deployment artifacts via Docker Compose manifests.
+    \item Enable safe and frequent releases of incremental pipeline stages.
+\end{itemize}
+
+\section{Functional \& Non-Functional Requirements %
+\BvrHint{\ldots traceable and testable}}
+The following requirements are traceable to specific services, database tables, or feature folders in the Medkart.ai repository.
+
+\subsection{Functional requirements (selected)}
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{User \& Authentication:} FR-1: Register\slash{}login via email or phone and password. FR-2: Issue and validate JWT tokens. FR-3: View and update profile information.
+    \item \textbf{Prescription Input \& OCR:} FR-4\slash{}5: Upload a prescription photo and extract drug\slash{}dosage\slash{}frequency via OCR. FR-6: Search directly, bypassing OCR. FR-7: LLM structures raw OCR text.
+    \item \textbf{Medicine Normalization:} FR-8: Fuzzy-match names to canonical catalog. FR-9: Resolve brand to salt composition. FR-10: Log normalization decisions with match score.
+    \item \textbf{Multi-Platform Price Fetching:} FR-11: Fetch live prices from all 5 platforms. FR-12: Route to static\slash{}headless scraper. FR-13: Apply anti-bot measures. FR-14\slash{}15: Cache-check and fallback. FR-16: Unified price schema.
+    \item \textbf{AI Enrichment:} FR-17: Isolation Forest anomaly flag vs.\ NPPA. FR-18: SHAP explanations. FR-19: Generic substitute ranking. FR-20: LLM-based interaction warnings. FR-21: Safety guardrail on all LLM output.
+    \item \textbf{Ranking, Real-Time Delivery \& Alerts:} FR-22\slash{}23: Weighted ranking, side-by-side display. FR-24: Progressive WebSocket\slash{}SSE streaming. FR-25\slash{}26: Price history and prescription retention. FR-27\slash{}28: Watchlist and target-price alerts.
+\end{itemize}
+
+\subsection{Non-functional requirements (selected)}
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Performance:} cached results under 2s (NFR-1); full live comparison under 15s with streaming (NFR-2).
+    \item \textbf{Scalability:} modular monolith, independently scalable service boundaries (NFR-3); horizontally scalable fetch layer (NFR-4).
+    \item \textbf{Reliability:} graceful degradation to cache\slash{}seed data (NFR-5); anti-bot resilience over retry-only (NFR-6).
+    \item \textbf{Security:} hashed passwords (NFR-7); JWT on all non-auth endpoints (NFR-8).
+    \item \textbf{Maintainability:} centralized shared packages (NFR-9); independently deployable services (NFR-10).
+    \item \textbf{Data accuracy:} confidence-thresholded matching (NFR-11); TimescaleDB hypertables (NFR-12).
+    \item \textbf{Usability:} single dashboard for 5 platforms (NFR-13); plain-language explanation for every AI flag (NFR-14).
+    \item \textbf{Portability:} Docker Compose (NFR-15).
+    \item \textbf{Observability:} centralized logs\slash{}traces\slash{}metrics (NFR-16); automated test suites across e2e\slash{}integration\slash{}contract\slash{}performance\slash{}security (NFR-17).
+\end{itemize}
+
+\section{Evaluation Criterion %
+\BvrHint{\ldots measurable and attributable}}
+We define success using measurable metrics tied to the core pipeline.
+
+\subsection{Primary evaluation metric}
+\textbf{F1 score of the Isolation Forest anomaly detector} vs.\ a rule-based fixed-threshold baseline, measured on a labelled NPPA-referenced dataset.
+\begin{itemize}[leftmargin=0.7cm]
+    \item Attribution: measured via comparison against ground-truth labels on held-out listings.
+\end{itemize}
+
+\subsection{Secondary evaluation metrics}
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Anomaly detection:} precision, recall, false-positive rate, enrichment latency.
+    \item \textbf{Interaction checking:} precision\slash{}recall vs.\ keyword-match baseline; guardrail pass rate.
+    \item \textbf{OCR\slash{}normalization:} field-level OCR accuracy; match-confidence distribution.
+    \item \textbf{Comparison performance:} cached response $<$2s (NFR-1); full comparison $<$15s (NFR-2).
+\end{itemize}
+
+\subsection{Pilot validation plan %
+\BvrHint{\ldots high-level}}
+\begin{itemize}[leftmargin=0.7cm]
+    \item Recruit 40--60 student\slash{}staff volunteers for a 2--3 week campus pilot.
+    \item Track anomaly-flag rate, interaction-flag rate, OCR correction rate, and repeat usage.
+\end{itemize}
+
+\section{Scalability %
+\BvrHint{\ldots with foresight}}
+The proposition should scale in both theoretical and practical senses.
+
+\begin{enumerate}[leftmargin=0.7cm]
+    \item \textbf{Scalable (architecturally):} The system should support growth in prescriptions processed and concurrent comparisons by:
+    \begin{itemize}[leftmargin=0.7cm]
+        \item organizing the backend as a modular monolith with independently extractable service boundaries (NFR-3),
+        \item keeping the fetch layer horizontally scalable (NFR-4),
+        \item using a stateless REST API behind a single gateway.
+    \end{itemize}
+
+    \item \textbf{Operationally deployable (practically):} The system should run on common managed infrastructure:
+    \begin{itemize}[leftmargin=0.7cm]
+        \item managed PostgreSQL\slash{}TimescaleDB,
+        \item Docker Compose for local development,
+        \item a CI\slash{}CD pipeline (already scaffolded) for staging\slash{}production releases.
+    \end{itemize}
+\end{enumerate}
+
+\section{Engine availability heuristic}
+A mature set of ``engines'' (tooling\slash{}services) is available to implement this as a web-based project:
+\begin{itemize}[leftmargin=0.7cm]
+    \item React for the web frontend, with React Native available for a future mobile client.
+    \item Node.js\slash{}TypeScript microservices behind a REST API gateway with JWT authentication.
+    \item Tesseract\slash{}Veryfi for OCR, RapidFuzz for fuzzy matching, and scikit-learn's Isolation Forest with SHAP for explainable anomaly detection.
+    \item Managed PostgreSQL with the TimescaleDB extension, plus Redis for caching.
+    \item Puppeteer\slash{}Playwright and Cheerio\slash{}Scrapy for hybrid, platform-aware scraping.
+    \item GitHub Actions for CI\slash{}CD and Docker for containerized, portable deployment on AWS.
+\end{itemize}
+We will use these mature components to focus on pipeline correctness, safety guardrails, and measurement rather than inventing new infrastructure.
+
+\section{Future Scalability Roadmap %
+\BvrHint{\ldots deferred, not ignored}}
+Deliberate deferrals identified during architecture design, scoped out of the pilot to keep the first deliverable lean, with named trigger conditions for adoption.
+
+{\small
+\begin{longtable}{@{}p{2.4cm}p{3.6cm}p{3.9cm}p{4.1cm}@{}}
+\caption{Future Scalability Roadmap} \\
+\toprule
+\textbf{Area} & \textbf{Current MVP Approach} & \textbf{Future Recommendation} & \textbf{Trigger to Adopt} \\
+\midrule
+\endhead
+Event streaming & Redis Pub\slash{}Sub & Apache Kafka (durable, replayable topics) & Event volume exceeds single Redis instance, or multiple consumer teams need the stream \\
+Analytics dashboard & Logs only via observability-service & Dedicated dashboard: growth, query volume, flag-rate trends & Recurring stakeholder reporting need post-pilot \\
+User behavior analysis & Not tracked & Product analytics: funnel drop-off, session replay & Adoption\slash{}retention becomes a tracked goal \\
+Service architecture & Modular monolith & Extract fetch\slash{}AI-enrichment as independent microservices & Load testing shows a bottleneck (NFR-3\slash{}4) \\
+Fetch layer scaling & Single scheduled scraper per platform & Worker pool with job queue (BullMQ\slash{}Kafka-backed) & Queuing delays exceed NFR-2 target \\
+Anomaly model & Isolation Forest, periodic offline retrain & Online\slash{}incremental learning pipeline & Sufficient labelled data post-pilot \\
+Notification channels & Email\slash{}SMS\slash{}push (FR-28) & Multi-channel orchestration with preferences & Meaningful watchlist adoption \\
+Mobile client & Not built (web-only MVP) & React Native app reusing ui-kit & Web pilot confirms demand for native app \\
+\bottomrule
+\end{longtable}
+}
+
+\section{Project scope and deliverables %
+\BvrHint{\ldots iteration-friendly}}
+\subsection{Initial deliverable %
+\BvrHint{\ldots first iteration}}
+\begin{itemize}[leftmargin=0.7cm]
+    \item Labelled anomaly dataset and rule-based baseline.
+    \item Web app skeleton: upload, OCR, direct search (FR-4--7).
+    \item Hybrid fetch pipeline covering $\geq$2 platforms (FR-11--16).
+    \item Basic logging for anomaly\slash{}normalization\slash{}OCR metrics.
+    \item CI: build + tests + linting; CD to staging.
+\end{itemize}
+
+\subsection{Subsequent deliverables}
+\begin{itemize}[leftmargin=0.7cm]
+    \item Isolation Forest + SHAP detector vs.\ baseline (FR-17\slash{}18).
+    \item LLM interaction checker with guardrails vs.\ keyword baseline (FR-20\slash{}21).
+    \item Generic-substitute ranking; full 5-platform coverage (FR-19).
+    \item Progressive streaming (FR-24); watchlist alerts (FR-27\slash{}28).
+    \item Campus pilot execution and metric reporting.
+\end{itemize}
+
+\section{Risks and mitigations}
+\begin{itemize}[leftmargin=0.7cm]
+    \item \textbf{Scraper fragility:} hybrid connector design, scraper-regression tests, cached fallback (FR-12\slash{}13, NFR-5).
+    \item \textbf{Data licensing:} use only publicly published NPPA data; document provenance.
+    \item \textbf{OCR accuracy:} human-in-the-loop correction; direct-search fallback (FR-6).
+    \item \textbf{LLM hallucination:} mandatory safety-guardrail layer before output reaches user (FR-21, NFR-9).
+    \item \textbf{Evaluation measurement ambiguity:} finalize the labelled-dataset protocol before development begins.
+    \item \textbf{Pilot operational issues:} early staging use; repeatable CI\slash{}CD; cross-device OCR\slash{}scraping tests.
+\end{itemize}
+
+\section{Summary}
+This project proposes Medkart.ai, a deployable web platform that verifies medicine price fairness against government-regulated ceilings and checks drug-interaction safety within the same pipeline used for price comparison across 5 major Indian e-pharmacy platforms. It meets the course criteria by emphasizing time-to-value through rapid iterations, implementing CI\slash{}CD to support frequent safe releases, and using measurable evaluation criteria (especially the anomaly-detector F1 score against a rule-based baseline). It remains focused on engineering pipeline correctness and scalability readiness, validated through a campus pilot of approximately 40--60 students and staff, with full traceability to the functional and non-functional requirements above.
+
+\end{document}
