@@ -1,0 +1,19 @@
+import { RawApollo247Result } from "./apollo247.scraper";
+import { NormalizedPrice } from "../onemg/onemg.mapper";
+
+export function mapApollo247Result(
+  raw: RawApollo247Result,
+  medicineId: number,
+  platformId: number
+): NormalizedPrice | null {
+  if (raw.price === null) return null;
+
+  return {
+    medicineId,
+    platformId,
+    price: raw.price,
+    discountPct: null,
+    stockStatus: true,
+    deliveryEta: null,
+  };
+}

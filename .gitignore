@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+*.log
+pnpm-lock.yaml
+.env.*
+!.env.example
+.turbo
+coverage
+.DS_Store

@@ -1,0 +1,32 @@
+import { fetchAndParse } from "../../static-scrapers/cheerio-client";
+
+export interface RawNetmedsResult {
+  productName: string;
+  price: string | null;
+  packSize: string | null;
+  sourceUrl: string;
+}
+
+/**
+ * Scrapes Netmeds' search results for a given medicine name.
+ * Selectors below are placeholders — confirm against the live DOM
+ * before relying on this.
+ */
+export async function scrapeNetmeds(medicineName: string): Promise<RawNetmedsResult[]> {
+  const searchUrl = `https://www.netmeds.com/catalogsearch/result?q=${encodeURIComponent(medicineName)}`;
+  const $ = await fetchAndParse(searchUrl);
+
+  const results: RawNetmedsResult[] = [];
+
+  $(".product-item-info").each((_, el) => {
+    const productName = $(el).find(".product-item-name").text().trim();
+    const price = $(el).find(".price").first().text().trim() || null;
+    const packSize = $(el).find(".pack-size").text().trim() || null;
+
+    if (productName) {
+      results.push({ productName, price, packSize, sourceUrl: searchUrl });
+    }
+  });
+
+  return results;
+}

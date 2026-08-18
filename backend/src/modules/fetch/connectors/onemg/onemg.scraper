@@ -1,0 +1,35 @@
+import { fetchAndParse } from "../../static-scrapers/cheerio-client";
+
+export interface RawOnemgResult {
+  productName: string;
+  price: string | null;
+  packSize: string | null;
+  sourceUrl: string;
+}
+
+/**
+ * Scrapes 1mg's search results page for a given medicine name.
+ * NOTE: the actual CSS selectors below are placeholders — real
+ * selectors need to be confirmed against 1mg's live DOM, which
+ * changes periodically. This is exactly why the mapper is a
+ * separate file: when selectors break, only this file needs updating,
+ * not anything downstream.
+ */
+export async function scrapeOnemg(medicineName: string): Promise<RawOnemgResult[]> {
+  const searchUrl = `https://www.1mg.com/search/all?name=${encodeURIComponent(medicineName)}`;
+  const $ = await fetchAndParse(searchUrl);
+
+  const results: RawOnemgResult[] = [];
+
+  $(".style__product-box___liZTs").each((_, el) => {
+    const productName = $(el).find(".style__pro-title___3G3rz").text().trim();
+    const price = $(el).find(".style__price-tag___B2csA").text().trim() || null;
+    const packSize = $(el).find(".style__pack-size___2JmUg").text().trim() || null;
+
+    if (productName) {
+      results.push({ productName, price, packSize, sourceUrl: searchUrl });
+    }
+  });
+
+  return results;
+}
