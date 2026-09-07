@@ -1,0 +1,237 @@
+<mxfile host="app.diagrams.net" agent="Claude" version="24.0.0">
+  <diagram id="medcompare-use-case" name="Use Case Diagram">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1530" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ================= SYSTEM BOUNDARY ================= -->
+        <mxCell id="boundary" value="MedCompare AI System" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fontSize=18;fillColor=none;strokeColor=#000000;strokeWidth=2;align=center;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="180" y="20" width="1160" height="1470" as="geometry" />
+        </mxCell>
+
+        <!-- ================= PRIMARY ACTOR ================= -->
+        <mxCell id="actorUser" value="User&#10;(Patient)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="610" width="50" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- ================= SECONDARY ACTORS ================= -->
+        <mxCell id="actorAuth" value="External Auth Provider&#10;(OAuth / Auth API key)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="60" width="50" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="actorOCR" value="OCR / LLM AI Service&#10;(prescription reading &amp; structuring)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="230" width="50" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="actorPharmacy" value="Online Pharmacy Platforms&#10;(1mg, PharmEasy, Netmeds,&#10;Truemeds, Apollo 24/7)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="540" width="50" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="actorNPPA" value="NPPA Government&#10;Price Database" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="800" width="50" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="actorNotify" value="Notification Service&#10;(Email / SMS / Push)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="1030" width="50" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- ================= USE CASES: AUTH ================= -->
+        <mxCell id="uc1" value="Register / Login" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="220" y="60" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc2" value="Login via External&#10;Auth API (OAuth)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="60" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ================= USE CASES: INPUT ================= -->
+        <mxCell id="uc3" value="Upload Prescription Photo" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="220" y="180" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc4" value="Search Medicine by Name" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="220" y="300" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ================= USE CASES: AI PROCESSING (backend/automated) ================= -->
+        <mxCell id="uc5" value="Extract Text via OCR" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="180" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc6" value="Structure Prescription&#10;Data (LLM)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="300" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc7" value="Match Medicine to Salt&#10;(Fuzzy Matching)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="420" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ================= USE CASES: PRICE FETCHING ================= -->
+        <mxCell id="uc8" value="Fetch Live Prices from&#10;Multiple Pharmacies" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="540" width="240" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc9" value="Cache Price Data (Redis)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="840" y="545" width="220" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ================= USE CASES: DASHBOARD ================= -->
+        <mxCell id="uc10" value="View Price Comparison&#10;Dashboard" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="220" y="660" width="200" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc11" value="View Cheapest&#10;Option Highlight" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="220" y="800" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc12" value="View Generic&#10;Substitutes" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="220" y="920" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc13" value="View Price Anomaly Flag" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="800" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc14" value="Detect Price Anomaly&#10;(Isolation Forest vs NPPA)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="840" y="795" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc15" value="View Anomaly&#10;Explanation (SHAP)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="920" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ================= USE CASES: SAFETY ================= -->
+        <mxCell id="uc16" value="Check Drug Interactions" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="220" y="1040" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc17" value="View Interaction Warning" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1040" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ================= USE CASES: TRENDS ================= -->
+        <mxCell id="uc18" value="View Price History Trends" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="220" y="1160" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ================= USE CASES: WISHLIST & PRICE ALERTS ================= -->
+        <mxCell id="uc19" value="Add Medicine to Wishlist" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="220" y="1280" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc20" value="Set Price Alert&#10;for Medicine" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1280" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="uc21" value="Monitor Price &amp; Trigger&#10;Alert (Background Job)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="840" y="1275" width="220" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ================= LEGEND ================= -->
+        <mxCell id="legend" value="Legend&#10;- Green oval: user-facing use case&#10;- Orange oval: automated / backend use case&#10;- Solid line: actor participation&#10;- Dashed arrow &#171;include&#187;: mandatory sub-step&#10;- Dashed arrow &#171;extend&#187;: optional add-on behaviour" style="text;html=1;align=left;verticalAlign=top;fontSize=11;spacing=6;fillColor=#ffffff;strokeColor=#999999;rounded=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="20" y="900" width="150" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- ================= ASSOCIATIONS: ACTOR - USE CASE ================= -->
+        <mxCell id="a1" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="actorUser" target="uc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="actorUser" target="uc3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="actorUser" target="uc4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="actorUser" target="uc10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="actorUser" target="uc16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="actorUser" target="uc18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a12" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="actorUser" target="uc19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a13" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="uc21" target="actorNotify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a7" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="uc2" target="actorAuth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="uc5" target="actorOCR">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="uc6" target="actorOCR">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="uc8" target="actorPharmacy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a11" style="endArrow=none;html=1;strokeColor=#000000;" edge="1" parent="1" source="uc14" target="actorNPPA">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================= INCLUDE RELATIONSHIPS ================= -->
+        <mxCell id="i1" value="&#171;include&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc3" target="uc5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i2" value="&#171;include&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc5" target="uc6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i3" value="&#171;include&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc6" target="uc7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i4" value="&#171;include&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc4" target="uc7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i5" value="&#171;include&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc7" target="uc8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i6" value="&#171;include&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc8" target="uc9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i7" value="&#171;include&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc10" target="uc8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i8" value="&#171;include&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc13" target="uc14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="i9" value="&#171;include&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc16" target="uc17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="i10" value="&#171;include&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc20" target="uc21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================= EXTEND RELATIONSHIPS ================= -->
+        <mxCell id="e1" value="&#171;extend&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc2" target="uc1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="&#171;extend&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc11" target="uc10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="&#171;extend&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc12" target="uc10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="&#171;extend&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc13" target="uc10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="&#171;extend&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc15" target="uc13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e6" value="&#171;extend&#187;" style="endArrow=block;dashed=1;html=1;strokeColor=#000000;fontSize=10;" edge="1" parent="1" source="uc20" target="uc19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
