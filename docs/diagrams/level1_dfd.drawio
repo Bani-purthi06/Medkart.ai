@@ -1,0 +1,150 @@
+<mxfile host="app.diagrams.net" agent="Claude">
+  <diagram name="Level 1 DFD" id="L1">
+    <mxGraphModel dx="3113" dy="2320" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2100" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0b1220;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="1300" width="2100" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" parent="1" style="text;html=1;fontSize=22;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;" value="MedCompare AI — Level 1 DFD (Decomposition of Process 0.0)" vertex="1">
+          <mxGeometry height="40" width="800" x="20" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1f2937;strokeColor=#93c5fd;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="E1  User" vertex="1">
+          <mxGeometry height="70" width="150" x="30" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1f2937;strokeColor=#93c5fd;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="E2  Pharmacy Platforms" vertex="1">
+          <mxGeometry height="80" width="170" x="900" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1f2937;strokeColor=#93c5fd;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="E3  NPPA Price DB" vertex="1">
+          <mxGeometry height="80" width="170" x="1440" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1f2937;strokeColor=#93c5fd;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="E4  LLM / OCR AI Service" vertex="1">
+          <mxGeometry height="80" width="170" x="210" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n7" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="1.0 Prescription Upload / Search" vertex="1">
+          <mxGeometry height="100" width="150" x="230" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="n8" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="2.0 OCR Extraction" vertex="1">
+          <mxGeometry height="100" width="150" x="490" y="565" as="geometry" />
+        </mxCell>
+        <mxCell id="n9" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="3.0 LLM Structuring" vertex="1">
+          <mxGeometry height="100" width="150" x="460" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="n10" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="4.0 Fuzzy Matching + Salt Mapping" vertex="1">
+          <mxGeometry height="100" width="150" x="690" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="n11" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="5.0 Hybrid Multi- Platform Fetch" vertex="1">
+          <mxGeometry height="110" width="160" x="900" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="n12" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="6.0 Unified Schema Normalization" vertex="1">
+          <mxGeometry height="100" width="160" x="1080" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="n13" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="7.0 AI Enrichment Layer" vertex="1">
+          <mxGeometry height="110" width="170" x="1410" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="n14" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="8.0 Caching &amp; Persistence" vertex="1">
+          <mxGeometry height="110" width="160" x="1650" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="n15" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="9.0 Ranking + Dashboard" vertex="1">
+          <mxGeometry height="110" width="160" x="1700" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="n16" parent="1" style="shape=partialRectangle;whiteSpace=wrap;html=1;top=0;left=0;bottom=1;right=0;fillColor=#374151;strokeColor=#fbbf24;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="D1  Medicine Catalog / Salt Mapping (PostgreSQL)" vertex="1">
+          <mxGeometry height="60" width="220" x="690" y="810" as="geometry" />
+        </mxCell>
+        <mxCell id="n17" parent="1" style="shape=partialRectangle;whiteSpace=wrap;html=1;top=0;left=0;bottom=1;right=0;fillColor=#374151;strokeColor=#fbbf24;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="D2  Redis Cache" vertex="1">
+          <mxGeometry height="60" width="190" x="1200" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="n18" parent="1" style="shape=partialRectangle;whiteSpace=wrap;html=1;top=0;left=0;bottom=1;right=0;fillColor=#374151;strokeColor=#fbbf24;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="D3  Price History (TimescaleDB)" vertex="1">
+          <mxGeometry height="60" width="190" x="1840" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="n19" edge="1" parent="1" source="n3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n7" value="Prescription photo / medicine search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n20" edge="1" parent="1" source="n7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n8" value="Prescription image">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n21" edge="1" parent="1" source="n8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.7;exitY=0;exitDx=0;exitDy=0;entryX=0.3;entryY=1;entryDx=0;entryDy=0;" target="n6" value="OCR request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n22" edge="1" parent="1" source="n6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" target="n8" value="Raw extracted text">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n23" edge="1" parent="1" source="n8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="n9" value="Raw OCR text">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n24" edge="1" parent="1" source="n9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.6;entryDx=0;entryDy=0;" target="n6" value="Structuring request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n25" edge="1" parent="1" source="n6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.3;entryDx=0;entryDy=0;" target="n9" value="Structured JSON">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n26" edge="1" parent="1" source="n9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="n10" value="Structured medicine list">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n27" edge="1" parent="1" source="n10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" target="n16" value="Brand name lookup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n28" edge="1" parent="1" source="n16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.7;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="n10" value="Canonical drug + salt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n29" edge="1" parent="1" source="n10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;" target="n11" value="Canonical drug list">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n30" edge="1" parent="1" source="n11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="n4" value="Scrape / API request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n31" edge="1" parent="1" source="n4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" target="n11" value="Raw price data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n32" edge="1" parent="1" source="n11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.4;entryDx=0;entryDy=0;" target="n17" value="Check cache">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n33" edge="1" parent="1" source="n17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0;exitY=0.6;exitDx=0;exitDy=0;entryX=1;entryY=0.6;entryDx=0;entryDy=0;" target="n11" value="Cached price (if fresh)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n34" edge="1" parent="1" source="n11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" target="n12" value="Raw multi-platform price data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n35" edge="1" parent="1" source="n12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n13" value="Normalized price records">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n36" edge="1" parent="1" source="n13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.4;entryDx=0;entryDy=0;" target="n5" value="NPPA price lookup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n37" edge="1" parent="1" source="n5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0;exitY=0.6;exitDx=0;exitDy=0;entryX=1;entryY=0.6;entryDx=0;entryDy=0;" target="n13" value="NPPA reference price">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n38" edge="1" parent="1" source="n13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.3;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.9;entryDx=0;entryDy=0;" target="n6" value="Explanation / ranking request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n39" edge="1" parent="1" source="n6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.7;entryY=0;entryDx=0;entryDy=0;" target="n13" value="SHAP / interaction explanation text">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="400.09" />
+              <mxPoint x="1525.82" y="400.09" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="n40" edge="1" parent="1" source="n13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.6;entryDx=0;entryDy=0;" target="n14" value="Enriched price + safety data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n41" edge="1" parent="1" source="n14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.4;entryDx=0;entryDy=0;" target="n17" value="Store cache">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n42" edge="1" parent="1" source="n17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.6;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="n14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n43" edge="1" parent="1" source="n14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="n18" value="Store price history">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n44" edge="1" parent="1" source="n14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" target="n15" value="Persisted ranked data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n45" edge="1" parent="1" source="n15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.6;entryDx=0;entryDy=0;" target="n3" value="Dashboard: prices, savings, warnings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,65 @@
+<mxfile host="app.diagrams.net" agent="Claude" version="24.0.0">
+  <diagram name="Level 0 - Context Diagram" id="L0">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0b1220;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1500" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" value="MedCompare AI (Medkart.ai) — Context Diagram (Level 0)" style="text;html=1;fontSize=22;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="800" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" value="0.0
+MedCompare AI" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="320" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" value="E1  Patient / User" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1f2937;strokeColor=#93c5fd;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="350" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" value="E2  Pharmacy Platforms
+(1mg, PharmEasy, Netmeds,
+Truemeds, Apollo 24/7)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1f2937;strokeColor=#93c5fd;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="100" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" value="E3  NPPA Price Database
+(Govt. reference prices)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1f2937;strokeColor=#93c5fd;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="320" width="260" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="n7" value="E4  LLM / OCR AI Service
+(OpenAI, Veryfi, etc.)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1f2937;strokeColor=#93c5fd;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="540" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="n8" value="Prescription photo /
+medicine search" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.35;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="n4" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n9" value="Price comparison,
+savings &amp; warnings" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.65;entryDx=0;entryDy=0;" edge="1" parent="1" source="n3" target="n4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n10" value="Price fetch request" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.4;entryDx=0;entryDy=0;" edge="1" parent="1" source="n3" target="n5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n11" value="Live multi-pharmacy
+price data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.05;entryDx=0;entryDy=0;" edge="1" parent="1" source="n5" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n12" value="NPPA price lookup" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.35;entryDx=0;entryDy=0;" edge="1" parent="1" source="n3" target="n6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n13" value="NPPA reference price" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.65;entryDx=0;entryDy=0;" edge="1" parent="1" source="n6" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n14" value="OCR / structuring /
+explanation request" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" parent="1" source="n3" target="n7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n15" value="Structured data /
+plain-language explanations" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0;exitY=0.55;exitDx=0;exitDy=0;entryX=1;entryY=0.95;entryDx=0;entryDy=0;" edge="1" parent="1" source="n7" target="n3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

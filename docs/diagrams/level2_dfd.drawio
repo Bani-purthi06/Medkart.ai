@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net" agent="Claude">
+  <diagram name="Level 2 DFD" id="L2">
+    <mxGraphModel dx="2669" dy="1840" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2100" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0b1220;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="1200" width="2100" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" parent="1" style="text;html=1;fontSize=22;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;" value="MedCompare AI — Level 2 DFD (Decomposition of Process 7.0 AI Enrichment Layer)" vertex="1">
+          <mxGeometry height="40" width="800" x="20" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="6.0 Unified Schema Normalization (upstream)" vertex="1">
+          <mxGeometry height="110" width="160" x="30" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="8.0 Caching &amp; Persistence (downstream)" vertex="1">
+          <mxGeometry height="110" width="170" x="1850" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="n5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1f2937;strokeColor=#93c5fd;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="E3  NPPA Price DB" vertex="1">
+          <mxGeometry height="80" width="160" x="300" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="n6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1f2937;strokeColor=#93c5fd;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="E4  LLM / OCR AI Service" vertex="1">
+          <mxGeometry height="80" width="170" x="910" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="n7" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="7.1 Price Anomaly Detection (Isolation Forest)" vertex="1">
+          <mxGeometry height="110" width="170" x="280" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="n8" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="7.2 SHAP Explainability" vertex="1">
+          <mxGeometry height="100" width="170" x="280" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="n9" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="7.3 Generic Substitute Ranking Engine" vertex="1">
+          <mxGeometry height="110" width="180" x="550" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="n10" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="7.4 Drug Interaction Safety Check" vertex="1">
+          <mxGeometry height="110" width="180" x="915" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="n11" parent="1" style="shape=partialRectangle;whiteSpace=wrap;html=1;top=0;left=0;bottom=1;right=0;fillColor=#374151;strokeColor=#fbbf24;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="D1  Salt Mapping / Trust Score (PostgreSQL)" vertex="1">
+          <mxGeometry height="60" width="220" x="530" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="n12" parent="1" style="shape=partialRectangle;whiteSpace=wrap;html=1;top=0;left=0;bottom=1;right=0;fillColor=#374151;strokeColor=#fbbf24;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="D4  Drug Interaction Lookup Table" vertex="1">
+          <mxGeometry height="60" width="210" x="900" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="n13" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0f766e;strokeColor=#5eead4;fontColor=#ffffff;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" value="7.5 Combine Enriched Results" vertex="1">
+          <mxGeometry height="110" width="180" x="1500" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="n14" edge="1" parent="1" source="n3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n7" value="Normalized price records">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n15" edge="1" parent="1" source="n3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.9;entryDx=0;entryDy=0;" target="n9" value="Normalized price + salt data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n16" edge="1" parent="1" source="n3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.6;exitDx=0;exitDy=0;entryX=0;entryY=0.9;entryDx=0;entryDy=0;" target="n10" value="Prescribed medicine list">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n17" edge="1" parent="1" source="n7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.4;exitY=0;exitDx=0;exitDy=0;entryX=0.4;entryY=1;entryDx=0;entryDy=0;" target="n5" value="NPPA price lookup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n18" edge="1" parent="1" source="n5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.6;exitY=1;exitDx=0;exitDy=0;entryX=0.6;entryY=0;entryDx=0;entryDy=0;" target="n7" value="NPPA reference price">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n19" edge="1" parent="1" source="n7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="n8" value="Anomaly flag + raw score">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n20" edge="1" parent="1" source="n9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" target="n11" value="Trust score / salt lookup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n21" edge="1" parent="1" source="n11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.7;exitY=0;exitDx=0;exitDy=0;entryX=0.7;entryY=1;entryDx=0;entryDy=0;" target="n9" value="Ranked candidates">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n22" edge="1" parent="1" source="n10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="n12" value="Interaction lookup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n23" edge="1" parent="1" source="n12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=1;entryDx=0;entryDy=0;" target="n10" value="Known interaction pairs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n24" edge="1" parent="1" source="n10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.6;exitY=0;exitDx=0;exitDy=0;entryX=0.6;entryY=1;entryDx=0;entryDy=0;" target="n6" value="Rewrite request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n25" edge="1" parent="1" source="n6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.4;entryY=0;entryDx=0;entryDy=0;" target="n10" value="Plain-language risk explanation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n26" edge="1" parent="1" source="n8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.2;entryDx=0;entryDy=0;" target="n13" value="Flag + plain- language explanation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n27" edge="1" parent="1" source="n9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n13" value="Ranked generic substitutes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n28" edge="1" parent="1" source="n10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;" target="n13" value="Interaction warnings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n29" edge="1" parent="1" source="n13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#cbd5e1;fontColor=#e2e8f0;fontSize=10;labelBackgroundColor=#0b1220;endArrow=block;elbow=vertical;jettySize=auto;orthogonalLoop=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n4" value="Enriched price + safety data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
