@@ -41,16 +41,16 @@ export function MedicineSearchBar({ initialQuery = "", autoFocus = false }: { in
         </Button>
       </div>
       {data.length > 0 && (
-        <div className="absolute z-20 mt-2 w-full rounded-lg border border-slate-200 bg-white p-2 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+        <div className="absolute z-20 mt-2 w-full rounded-2xl border border-orange-100 bg-white p-2 shadow-soft">
           {data.slice(0, 5).map((medicine) => (
             <button
               key={medicine.id}
               type="button"
               onClick={() => navigate(`/medicine/${medicine.id}`)}
-              className="focus-ring flex w-full items-center justify-between rounded-md px-3 py-2 text-left hover:bg-slate-50 dark:hover:bg-slate-800"
+              className="focus-ring flex w-full items-center justify-between rounded-xl px-3 py-2 text-left hover:bg-orange-50"
             >
               <span>
-                <span className="block text-sm font-semibold text-ink dark:text-white">{medicine.medicineName}</span>
+                <span className="block text-sm font-semibold text-ink">{medicine.medicineName}</span>
                 <span className="text-xs text-slate-500">{medicine.salts.map((salt) => salt.saltName).join(", ")}</span>
               </span>
               <span className="text-sm font-bold text-mint">from Rs {medicine.lowestPrice}</span>

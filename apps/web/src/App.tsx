@@ -22,7 +22,7 @@ export default function App() {
   const isPublicLanding = location.pathname === "/";
   const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
   return (
-    <div className="min-h-screen bg-slate-50 text-ink dark:bg-slate-950 dark:text-slate-100">
+    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50/30 to-white text-ink">
       {!isAuthPage && !isPublicLanding && <Navbar />}
       <Routes>
         <Route path="/" element={<LandingPage />} />

@@ -21,10 +21,10 @@ export function PrescriptionReviewPage() {
     <PageContainer>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-black text-ink dark:text-white">Review OCR results</h1>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-600">AI prescription reader</p><h1 className="mt-2 text-3xl font-black text-ink">Review OCR results</h1>
           <p className="text-slate-500">Correct low-confidence lines before comparing prices.</p>
         </div>
-        <Button icon={<Pill className="size-4" />} onClick={() => addToast({ tone: "success", message: "Combined comparison prepared" })}>Compare prices for all items</Button>
+        <Button className="shadow-lg shadow-orange-500/20" icon={<Pill className="size-4" />} onClick={() => addToast({ tone: "success", message: "Combined comparison prepared" })}>Compare prices for all items</Button>
       </div>
       <DrugInteractionWarningBanner interactions={data.interactions} />
       <div className="mt-5 grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">

@@ -10,7 +10,7 @@ export function SearchResultCard({ medicine }: { medicine: Medicine }) {
       <Card className="h-full p-4 hover:-translate-y-1 hover:shadow-soft active:scale-[0.99]">
         <div className="mb-3 flex items-start justify-between gap-3">
           <div>
-            <h3 className="font-bold text-ink dark:text-white">{medicine.medicineName}</h3>
+            <h3 className="font-bold text-ink">{medicine.medicineName}</h3>
             <p className="text-sm text-slate-500">{medicine.brandName} | {medicine.strength}</p>
           </div>
           <PriceTag price={medicine.lowestPrice} />
@@ -19,7 +19,7 @@ export function SearchResultCard({ medicine }: { medicine: Medicine }) {
           <svg viewBox="0 0 120 36" className="h-full w-full" aria-hidden="true">
             <polyline
               fill="none"
-              stroke="#15A377"
+              stroke="#f97316"
               strokeWidth="3"
               strokeLinecap="round"
               points={medicine.trend7d
@@ -29,7 +29,7 @@ export function SearchResultCard({ medicine }: { medicine: Medicine }) {
           </svg>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+          <span className="rounded-full bg-orange-50 px-2 py-1 text-xs text-orange-700">
             {medicine.dosageForm}
           </span>
           <NppaComplianceBadge ceiling={medicine.nppaCeiling} price={medicine.lowestPrice} />

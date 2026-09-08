@@ -19,7 +19,7 @@ export function AdminSidebar() {
             to={item.to}
             className={({ isActive }) =>
               `focus-ring flex min-w-fit items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold ${
-                isActive ? "bg-ink text-white dark:bg-white dark:text-ink" : "bg-white text-slate-600 dark:bg-slate-900 dark:text-slate-300"
+                isActive ? "bg-orange-500 text-white shadow-md shadow-orange-500/20" : "bg-white text-slate-600 hover:bg-orange-50"
               }`
             }
           >

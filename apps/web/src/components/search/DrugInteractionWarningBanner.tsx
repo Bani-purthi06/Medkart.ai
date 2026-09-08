@@ -7,9 +7,9 @@ export function DrugInteractionWarningBanner({ interactions }: { interactions: D
   const [open, setOpen] = useState(true);
   if (!interactions.length) return null;
   return (
-    <Card className="border-coral/30 bg-coral/5 p-4">
+    <Card className="border-amber-200 bg-amber-50 p-4">
       <button className="focus-ring flex w-full items-center justify-between rounded text-left" onClick={() => setOpen(!open)}>
-        <span className="flex items-center gap-2 font-bold text-coral">
+        <span className="flex items-center gap-2 font-bold text-amber-700">
           <AlertTriangle className="size-5" />
           Drug interaction warning
         </span>
@@ -18,7 +18,7 @@ export function DrugInteractionWarningBanner({ interactions }: { interactions: D
       {open && (
         <div className="mt-3 grid gap-2">
           {interactions.map((item) => (
-            <p key={item.id} className="text-sm text-slate-700 dark:text-slate-200">
+            <p key={item.id} className="text-sm text-slate-700">
               <strong>{item.medicineA}</strong> + <strong>{item.medicineB}</strong> ({item.severity}): {item.summary}
             </p>
           ))}
