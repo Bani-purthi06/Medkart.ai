@@ -44,13 +44,13 @@ textarea {
 
 @layer base {
   ::selection {
-    @apply bg-mint/20 text-ink;
+    @apply bg-orange-100 text-ink;
   }
 }
 
 @layer utilities {
   .focus-ring {
-    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint;
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500;
   }
 
   .font-display {

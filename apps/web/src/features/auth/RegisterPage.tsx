@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { registerUser } from "@/api/auth";
 import { Button } from "@/components/ui/Button";
@@ -47,6 +47,7 @@ export function RegisterPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const login = useAuthStore((state) => state.login);
 
   const form = useForm<RegisterFormData>({
@@ -65,7 +66,8 @@ export function RegisterPage() {
         password: data.password,
       });
       login(response.token, response.user);
-      navigate("/search", { replace: true });
+      const from = (location.state as { from?: string } | null)?.from ?? "/search";
+      navigate(from, { replace: true });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Registration failed. Please try again.");
     } finally {
